@@ -1,0 +1,15 @@
+body {
+	padding-top: 70px;
+}
+
+.login-box {
+	width: 450px;
+	padding: 20px;
+	margin: 50px auto;
+}
+
+.login-box-title {
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 40px;
+}
