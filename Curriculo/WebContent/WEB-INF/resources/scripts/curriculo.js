@@ -1,5 +1,6 @@
 var extensions = function() {
-	if (!String.prototype.format) {
+	if (!String.prototype.format)
+	{
 		String.prototype.format = function() {
 			var args = arguments;
 			return this.replace(/{(\d+)}/g, function(match, number) {
@@ -8,7 +9,8 @@ var extensions = function() {
 		};
 	}
 
-	if (!String.format) {
+	if (!String.format)
+	{
 		String.format = function(format) {
 			var args = Array.prototype.slice.call(arguments, 1);
 			return format.replace(/{(\d+)}/g, function(match, number) {
@@ -21,12 +23,32 @@ var extensions = function() {
 angular.module("curriculo", []);
 angular.module("curriculo").controller("indexController", function($scope, $http, $location) {
 
+	$scope.titulo = "Currículo - Spring MVC";
 	$scope.entrar = function(login) {
-		$http.post("/Curriculo/login", login).success(function(data) {
-			
-			console.log(data);
-			
-			//window.location.href = "/Curriculo/{0}".format(data.page);
-		});
+		try
+		{
+			$http.post("/Curriculo/login", login).success(function(data) {
+
+				if (data.hasErrorList == false)
+				{
+					showSuccessMessage(data.errorMessage);
+				}
+				else
+				{
+					window.location.href = "/Curriculo/home";
+				}
+			}).error(function(data, status) {
+
+				console.log("Erro: ");
+				console.log(data);
+				console.log("Status: ");
+				console.log(status);
+
+			});
+		}
+		catch (e)
+		{
+			console.log(e);
+		}
 	};
 });

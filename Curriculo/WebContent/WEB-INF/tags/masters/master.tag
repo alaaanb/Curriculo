@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="controls" tagdir="/WEB-INF/tags/controls" %>
 
 <%@ attribute name="header" fragment="true"%>
 <%@ attribute name="body" fragment="true"%>
@@ -6,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html ng-app="curriculo">
 	<head>
-		<title>${titulo}</title>
+		<title>{{titulo}}</title>
 		
 		<c:url var="curriculoCss" value="/resources/css/curriculo.css" />
 		<c:url var="angularJs" value="/resources/scripts/angular.js" />
@@ -37,6 +38,8 @@
 				</div>
 			</div>
 		</nav>
+	
+		<controls:messageBox />
 	
 		<div class="container">
 			<jsp:doBody />
